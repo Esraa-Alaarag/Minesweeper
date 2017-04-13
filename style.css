@@ -1,0 +1,159 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+*{
+	margin:0;
+	padding:0;
+}
+body{
+	background-image: url('images/bg.jpg'); 
+	background-size: cover;	
+}
+
+#wrapper{
+	padding: 5px;
+	margin: 0 auto;
+	height: 610px;
+	width: 400px;
+	margin-top: 5%;
+	box-sizing: border-box; 
+	}
+
+#grid{
+	width: 440px;
+	padding: 15px;
+	height: 430px;
+	border:1px solid black;
+	box-sizing: border-box;
+	position: relative;
+	background: lightgray;
+	}
+
+.panel{
+	width: 440px;
+	height: 94px;
+	border:1px solid black;
+	padding: 15px;
+	box-sizing: border-box; 
+	position: relative;
+	text-align:center;
+	background: lightgray;
+	}
+#smily{
+	
+	border:1px solid gray;
+	display:inline-block; 
+	margin: 0 auto; 
+	}
+.happy{
+	height: 60px;
+	width: 60px;
+	background: #fff;
+	background-image: url('images/smilyhappy.png'); 
+	background-size: cover;	
+	}
+.sad{
+	background: #fff;
+	background-image: url('images/sad.png'); 
+	background-size: cover;	
+	}
+#time{
+	height: 60px;
+	width: 100px;
+	border:1px solid gray;
+	display:inline-block;
+	float: right;  
+	background: black;
+	font-family: 'Orbitron', sans-serif;
+	color:red;
+	box-sizing: border-box; 
+	font-size: 25px;
+	padding-top: 5%;
+	}
+#numbomb{
+	height: 60px;
+	width: 100px;
+	border:1px solid gray;	
+	display:inline-block; 
+	float: left; 
+	background: black;
+	font-family: 'Orbitron', sans-serif;
+	box-sizing: border-box; 
+	color:red;
+	font-size: 25px;
+	padding-top: 5%;
+	}
+.column{
+
+	width: 50px;
+	float:left;
+	height: 430px;
+	font-size: 30px;
+	}
+.icon{
+	border:1px solid black;
+	width: 50px;
+	height: 50px;
+	box-sizing: border-box;
+	text-align: center;
+}
+.square{
+	border:1px solid black;
+	width: 50px;
+	height: 50px;
+	box-sizing: border-box;
+	text-align: center;
+	}
+.closed{
+	width: 50px;
+	height: 50px;
+	background-image: url('images/unopened.png'); 
+	background-size: cover;
+	box-sizing: border-box;	
+}
+.zero{
+	background: lightgray;
+}
+
+.one{
+	background-image: url('images/1.png'); 
+	background-size: cover;	
+	}
+.two{
+	background-image: url('images/2.png'); 
+	background-size: cover;	
+	}
+.three{
+	background-image: url('images/3.png'); 
+	background-size: cover;	
+	}
+.four{
+	background-image: url('images/4.png'); 
+	background-size: cover;	
+	}
+.five{
+	background-image: url('images/5.png'); 
+	background-size: cover;	
+	}
+.six{
+	background-image: url('images/6.png'); 
+	background-size: cover;	
+	}
+.seven{
+	background-image: url('images/7.png'); 
+	background-size: cover;	
+	}
+.eight{
+	background-image: url('images/8.png'); 
+	background-size: cover;	
+	}
+.bomb{
+	background-image: url('images/bomb.png'); 
+	background-size: cover;	
+	}
+.clickedbomb{
+	background-image: url('images/clickedbomb.png'); 
+	background-size: cover;	
+	}
+.flag{
+	background-image: url('images/flag.png'); 
+	background-size: cover;	
+	}
