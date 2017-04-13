@@ -51,6 +51,8 @@ body{
 	background-size: cover;	
 	}
 .sad{
+	height: 60px;
+	width: 60px;
 	background: #fff;
 	background-image: url('images/sad.png'); 
 	background-size: cover;	
@@ -148,6 +150,7 @@ body{
 .bomb{
 	background-image: url('images/bomb.png'); 
 	background-size: cover;	
+	box-sizing: border-box;
 	}
 .clickedbomb{
 	background-image: url('images/clickedbomb.png'); 

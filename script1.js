@@ -7,6 +7,7 @@ $( "#grid" ).one( "click", starttime);
 let clk;
 let btn;
 let bomb=10;
+var timer;
 
 
 
@@ -24,7 +25,10 @@ $('.square').on('click', function(){
     btn=$(this).attr("id");
     clk=1;
     $(this).removeClass("closed");
+    console.log($(this).text());
+    leftclk(btn);
     return true;
+
 });
 }
 opacity: 0.5;
@@ -40,7 +44,7 @@ let m;
   function starttime () {
     
     counter++;//increment the counter by 1
-    setTimeout ( "starttime()", 1000 );//runs itsself after 1000 miliseconds
+    timer=setTimeout ( "starttime()", 1000 );//runs itsself after 1000 miliseconds
     if(counter>60)
     {
       counter=0;
@@ -93,13 +97,10 @@ function clues(){
   for(var c = 1; c < 9; c++){   
     for(var r = 1; r < 9; r++){ 
       if(bigarray[r][c]===10){
-        console.log(`mine in row ${r} ,and column ${c}`);
         for (var cc = c - 1; cc <= c+1; cc++){
           for (var rr = r - 1; rr <= r+1; rr++){
             if (bigarray[rr][cc]!==10) {
-              console.log(`adjacent in row ${rr} ,and column ${cc}`);
               ++bigarray[rr][cc];
-              console.log(cc ,rr);
             }
           }
         }
@@ -116,3 +117,61 @@ function clues(){
   }
 
 }
+
+
+function leftclk(btn)
+{
+  btn="#"+btn;
+  console.log($(btn).text());
+  switch(parseInt($(btn).text()))
+    {
+      case 0:
+        break;
+      case 1:
+      $(btn).removeClass("closed").addClass( "one" );
+      break;
+
+      case 2:
+      $(btn).removeClass("closed").addClass( "two" );
+      break;
+
+      case 3:
+      $(btn).removeClass("closed").addClass( "three" );
+      break;
+
+      case 4:
+      $(btn).removeClass("closed").addClass( "four" );
+      break;
+
+      case 5:
+      $(btn).removeClass("closed").addClass( "five" );
+      break;
+
+      case 6:
+      $(btn).removeClass("closed").addClass( "six" );
+      break;
+
+      case 7:
+      $(btn).removeClass("closed").addClass( "seven" );
+      break;
+
+      case 8:
+      $(btn).removeClass("closed").addClass( "eight" );
+      break;
+
+      case 9:
+      $(btn).removeClass("closed").addClass( "flag" );
+      break;
+
+      case 10:
+      $(btn).removeClass("closed").addClass( "clickedbomb" );
+      $("#resetbtn").removeClass("happy").addClass("sad");
+      clearTimeout(timer);
+      console.log("sad");
+      break;
+
+      default: 
+    }
+  }
+
+
