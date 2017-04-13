@@ -6,7 +6,7 @@ $( "#grid" ).one( "click", starttime);
 
 let clk;
 let btn;
-let bomb=10
+let bomb=10;
 
 
 
@@ -16,6 +16,8 @@ function clklistener(){
     clk=2;
     $(this).removeClass("closed").addClass("flag");
     $("#numbomb").text(--bomb);
+    if($(this).text()==10)
+    
     return false;
 });
 $('.square').on('click', function(){
@@ -59,8 +61,58 @@ function randgene(){
       var rand;
       let array=[];
       for(let i=0;i<10;i++){
-        rand=Math.floor(Math.random()*65); 
+        rand=(Math.floor(Math.random()*65)); 
+        console.log(rand);
         array[i]=$('.square').eq(rand).text(10).css('color', 'rgba(0,0,0,1)');
       }
+      clues();
 }
 
+function clues(){
+  var i=0
+  var arr = [];
+  var bigarray=[];
+  m=8;
+  n=8;
+  // create the 2d array and intilize to zero
+  for(var c = 0; c < 10; c++){
+    bigarray[c] = [];    
+    for(var r = 0; r < 10; r++){ 
+      bigarray[c][r] = 0;   
+    }    
+  }
+  // get the data from the original div
+  for(var c = 1; c < 9; c++){   
+    for(var r = 1; r < 9; r++){ 
+      bigarray[r][c]=parseInt($('.square').eq(i).text()); 
+      i++;  
+    }    
+  }
+
+  // adding adjacent numbers
+  for(var c = 1; c < 9; c++){   
+    for(var r = 1; r < 9; r++){ 
+      if(bigarray[r][c]===10){
+        console.log(`mine in row ${r} ,and column ${c}`);
+        for (var cc = c - 1; cc <= c+1; cc++){
+          for (var rr = r - 1; rr <= r+1; rr++){
+            if (bigarray[rr][cc]!==10) {
+              console.log(`adjacent in row ${rr} ,and column ${cc}`);
+              ++bigarray[rr][cc];
+              console.log(cc ,rr);
+            }
+          }
+        }
+      }    
+    }
+  }
+// return the values back
+  i=0;
+  for(var r = 1; r < 9; r++){   
+    for(var c = 1; c < 9; c++){ 
+      $('.square').eq(i).text(bigarray[c][r]).css('color', 'rgba(0,0,0,1)'); 
+      i++;  
+    }    
+  }
+
+}
