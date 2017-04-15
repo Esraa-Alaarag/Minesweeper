@@ -4,7 +4,7 @@
 	padding:0;
 }
 body{
-	background-image: url('images/bg.jpg'); 
+	background-image: url('images/bg1.png'); 
 	background-size: cover;	
 }
 
@@ -18,28 +18,32 @@ body{
 	}
 
 #grid{
-	width: 433px;
+	width: 437px;
 	padding: 15px;
 	height: 430px;
-	border:1px solid black;
+	border:2px solid gray;
 	box-sizing: border-box;
 	position: relative;
-	background: lightgray;
+	background: url('images/bg2.jpg');
+	border-style: outset;
+
 	}
 
 .panel{
-	width: 433px;
+	width: 437px;
 	height: 94px;
-	border:1px solid black;
+	border:2px solid gray;
 	padding: 15px;
 	box-sizing: border-box; 
 	position: relative;
 	text-align:center;
-	background: lightgray;
+	background: url('images/bg2.jpg');
+	border-style: outset;
+	
 	}
 #smily{
 	
-	border:1px solid gray;
+	border:3px solid gray;
 	display:inline-block; 
 	margin: 0 auto; 
 	}
@@ -60,7 +64,7 @@ body{
 #time{
 	height: 60px;
 	width: 100px;
-	border:1px solid gray;
+	border:3px solid gray;
 	display:inline-block;
 	float: right;  
 	background: black;
@@ -69,11 +73,12 @@ body{
 	box-sizing: border-box; 
 	font-size: 25px;
 	padding-top: 5%;
+	border-style: inset;
 	}
 #numbomb{
 	height: 60px;
 	width: 100px;
-	border:1px solid gray;	
+	border:3px solid gray;	
 	display:inline-block; 
 	float: left; 
 	background: black;
@@ -82,6 +87,7 @@ body{
 	color:red;
 	font-size: 25px;
 	padding-top: 5%;
+	border-style: inset;
 	}
 .column{
 

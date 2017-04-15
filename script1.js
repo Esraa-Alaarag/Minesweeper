@@ -31,6 +31,9 @@ function clklistener(){
   // for right click and toggle between  flag 
   // and closed classes which change the button BG
 
+  var audio1 = $("#clicksound")[0];
+  var audio2 = $("#rightclick")[0];
+  var audio3 = $("#bombsound")[0];
   let btn;
   // righ click function
   $('.square').on('contextmenu', function(){
@@ -41,11 +44,13 @@ function clklistener(){
     // get the number of elements with flag 
     // class then subtract the result from 10
     $("#numbomb").text(10-getflag());
+    audio2.play();
   });
 
 
   // left click function
   $('.square').on('click', function(){
+    audio1.play();
     // store the id of the clicked square
     btn=$(this).attr("id");
     //open the cell by removing the class with the button BG
@@ -53,7 +58,11 @@ function clklistener(){
     $(this).removeClass("closed");
     // call function get the BG  that suitable to the cell value
     leftclk(btn);
-
+    
+    if($(this).text()==10)
+    {
+      audio3.play();
+    }
   });
 
   // smily button to reset the game
@@ -306,6 +315,8 @@ function open(cc,rr) {
       i++;  
     }    
   }
+  var audio4 = new Audio('images/TaDa.wav');
+  audio4.play();
 destroyAdjacentTiles(cc,rr,bigarray);
 }
 
@@ -371,6 +382,7 @@ let m;
       }
       if(value===10)
       {
+        clickcontrol(".square");
         $(".square").eq(i).removeClass("closed").addClass( "bomb" ); 
       }
       if(value===0)

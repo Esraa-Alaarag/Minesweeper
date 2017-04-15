@@ -3,11 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Mine sweeper</title>
+	<link rel="icon" href="images/bomb.png">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="script1.js"></script>
 </head>
 <body>
+
 	<div id="wrapper">
 		<div class="panel">
 			<div id="numbomb">10</div>
@@ -105,6 +107,14 @@
 			
 		</div>
 	</div>
-	
+	<audio id="clicksound" preload="auto">
+    <source src="images/click.wav"></source>
+</audio>
+<audio id="rightclick" preload="auto">
+    <source src="images/rclick.wav"></source>
+</audio>
+<audio id="bombsound" preload="auto">
+    <source src="images/Bomb.wav"></source>
+</audio>
 </body>
 </html>
