@@ -61,6 +61,14 @@ body{
 	background-image: url('images/sad.png'); 
 	background-size: cover;	
 	}
+
+.cool{
+	height: 60px;
+	width: 60px;
+	background: #fff;
+	background-image: url('images/cool1.png'); 
+	background-size: cover;	
+}
 #time{
 	height: 60px;
 	width: 100px;

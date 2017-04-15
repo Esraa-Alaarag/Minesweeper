@@ -55,7 +55,7 @@ function clklistener(){
     btn=$(this).attr("id");
     //open the cell by removing the class with the button BG
     // change the BG
-    $(this).removeClass("closed");
+    // $(this).removeClass("closed");
     // call function get the BG  that suitable to the cell value
     leftclk(btn);
     
@@ -239,6 +239,7 @@ function leftclk(btn)
       $(btn).removeClass("closed").addClass( "five" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
+
       break;
 
       case 6:
@@ -292,13 +293,27 @@ function clickcontrol(btn){
   $(btn).off('click');
   $(btn).off('contextmenu');
 }
-
+ function isclosed(r,c)
+ {
+  let id;
+    id="#c"+r+c;
+    console.log($(id).attr("class"));
+    if($(id).hasClass('closed')=== true)
+      return true;
+      else 
+        return false;
+ }
 
 
 function open(cc,rr) {
 // create 2d array 
+
+
+if(isclosed(cc,rr)===false)return;
   let m;
   let bigarray=[];
+
+
   for(var c = 0; c < 8; c++){
     bigarray[c] = [];    
     for(var r = 0; r < 8; r++){ 
@@ -315,8 +330,9 @@ function open(cc,rr) {
       i++;  
     }    
   }
-  var audio4 = new Audio('images/TaDa.wav');
-  audio4.play();
+  
+var audio4 = new Audio('images/TaDa.wav');
+audio4.play();
 destroyAdjacentTiles(cc,rr,bigarray);
 }
 
@@ -373,10 +389,8 @@ let m;
     for(let i=0;i<64;i++){
       value=parseInt($('.square').eq(i).text());
        $(".square").eq(i).removeClass("flag");
-      console.log(value);
       if(value!==10 && value!==0 )
       {
-       console.log($(".square").eq(i).attr("id"));
        leftclk($(".square").eq(i).attr("id"));
        s++;
       }
@@ -390,5 +404,4 @@ let m;
         $(".square").eq(i).removeClass("closed"); 
       }
     }
-
   }
