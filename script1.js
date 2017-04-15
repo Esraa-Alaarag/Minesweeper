@@ -59,6 +59,8 @@ function clklistener(){
     // call function get the BG  that suitable to the cell value
     leftclk(btn);
     
+    checkwinner();
+
     if($(this).text()==10)
     {
       audio3.play();
@@ -67,9 +69,7 @@ function clklistener(){
 
   // smily button to reset the game
   $('#resetbtn').click(function () {
-  $('#square').on('click');
-  $('#square').on('contextmenu');
-  initialize();
+  window.location.reload();
 
   });
 }
@@ -212,56 +212,56 @@ function leftclk(btn)
         break;
       case 1:
       // remove the cell cover and display the cell value
-      $(btn).removeClass("closed").addClass( "one" );
+      $(btn).removeClass("closed flag").addClass( "one" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 2:
-      $(btn).removeClass("closed").addClass( "two" );
+      $(btn).removeClass("closed flag").addClass( "two" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 3:
-      $(btn).removeClass("closed").addClass( "three" );
+      $(btn).removeClass("closed flag").addClass( "three" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 4:
-      $(btn).removeClass("closed").addClass( "four" );
+      $(btn).removeClass("closed flag").addClass( "four" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 5:
-      $(btn).removeClass("closed").addClass( "five" );
+      $(btn).removeClass("closed flag").addClass( "five" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
 
       break;
 
       case 6:
-      $(btn).removeClass("closed").addClass( "six" );
+      $(btn).removeClass("closed flag").addClass( "six" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 7:
-      $(btn).removeClass("closed").addClass( "seven" );
+      $(btn).removeClass("closed flag").addClass( "seven" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 8:
-      $(btn).removeClass("closed").addClass( "eight" );
+      $(btn).removeClass("closed flag").addClass( "eight" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
 
       case 9:
-      $(btn).removeClass("closed").addClass( "flag" );
+      $(btn).removeClass("closed flag").addClass( "flag" );
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
@@ -377,8 +377,10 @@ let m;
   {
     let id;
     id="#c"+r+c;
-    if($(id).text()==0)
-    $(id).removeClass("closed");
+    if($(id).text()==0){
+    $(id).removeClass("closed flag");
+    clickcontrol(id)
+  }
     else{
     leftclk(id.substr(1))}
   }
@@ -405,3 +407,7 @@ let m;
       }
     }
   }
+
+  function checkwinner(){
+  return $('.closed').length;
+}
