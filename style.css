@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Righteous');
 *{
 	margin:0;
 	padding:0;
@@ -8,27 +9,70 @@ body{
 	background-size: cover;	
 	background-repeat: no-repeat;
 }
-
+h1
+{
+	color: darkred;
+	text-align: center;
+	padding-top: 30px;
+	font-family: 'Josefin Slab', serif;
+	font-size: 60px;
+	text-shadow: 3px 0px 0px gray;
+	letter-spacing: 5px;
+}
 #wrapper{
+	position: relative;
+	margin: 0 auto;
+	display: flex;
+
+}
+
+#game{
 	padding: 5px;
 	margin: 0 auto;
 	height: 610px;
 	width: 400px;
-	margin-top: 5%;
+	margin-top: 1%;
 	box-sizing: border-box; 
+	flex:1;
+	justify-content: center;
+	margin-left: 10%;
+	}
+	#instruction{
+	text-shadow: 3px 0px 0px gray;
+	padding: 30px;
+	height: auto;
+	width: 400px ;
+	margin-top: 1%;
+	border:2px solid gray;
+	box-sizing: border-box; 
+	border-style: outset;
+	border-radius: 30px;
+	background: url('images/bg2.jpg');
+	flex:1;
+	margin-right: 10%;
+	}
+	p{
+		line-height: 35px;
+		font-size: 25px;
+		font-family: 'Josefin Slab', serif;
 	}
 
 #grid{
 	width: 437px;
 	padding: 15px;
-	height: 430px;
+	height: 450px;
 	border:2px solid gray;
 	box-sizing: border-box;
 	position: relative;
 	background: url('images/bg2.jpg');
 	border-style: outset;
-
+	border-bottom-left-radius: 30px;
+	border-bottom-right-radius: 30px;
 	}
+img{
+	width: 400px;
+	height: 400px;
+}
 
 .panel{
 	width: 437px;
@@ -40,6 +84,8 @@ body{
 	text-align:center;
 	background: url('images/bg2.jpg');
 	border-style: outset;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
 	
 	}
 #smily{
@@ -67,7 +113,7 @@ body{
 	height: 60px;
 	width: 60px;
 	background: #fff;
-	background-image: url('images/cool1.png'); 
+	background-image: url('images/cool.png'); 
 	background-size: cover;	
 }
 #time{

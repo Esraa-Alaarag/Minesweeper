@@ -5,8 +5,9 @@ window.onload = function() {
   // this function initialize the cells in the grid to zero
   initialize();
   // start the timing with the first click on the grid
+  if(!lost){
   $( "#grid" ).one( "click", starttime);
-
+ $( "#grid" ).one( "contextmenu", starttime);}
   document.oncontextmenu = function() {
     return false;
 }
@@ -21,6 +22,8 @@ let mines=10;
 var timer;
 // start with no game no lost
 var lost=false;
+
+let timestring;
 
 
 
@@ -43,7 +46,7 @@ function clklistener(){
     $(this).toggleClass( "flag", "closed");
     // get the number of elements with flag 
     // class then subtract the result from 10
-    $("#numbomb").text(10-getflag());
+    getflag();
     audio2.play();
   });
 
@@ -58,7 +61,7 @@ function clklistener(){
     // $(this).removeClass("closed");
     // call function get the BG  that suitable to the cell value
     leftclk(btn);
-    
+    getflag();
     checkwinner();
 
     if($(this).text()==10)
@@ -78,6 +81,7 @@ function clklistener(){
 function initialize(){
   // all the text is hidden and BG is closed buttons
   $('.square').text(0).css('text-indent', '-10000px').css('overflow', 'hidden');
+  //$('.square').text(0);
   $('.square').addClass("closed");
   // call function to spread the mines randomly in the grid
   randgene();
@@ -91,11 +95,12 @@ let s=0;
 let m=0;
   function starttime () {
     //increment the second by 1
-    sec++;
+    
     // this condition was added to 
     // include the case when the user 
     // click mine right from the begining
     if(!lost)
+     sec++; 
     timer=setTimeout ( "starttime()", 1000 );
     // after 60 seconds increment the minutes set the 
     // seconds back to zero
@@ -107,7 +112,8 @@ let m=0;
     // get the numbers in 00 format then return them back to the timer
     m=pad(min);
     s=pad(sec);
-    $('#time').text(`${m}:${s}`);
+    timestring=`${m}:${s}`
+    $('#time').text(timestring);
   }
 
   // this function create 00 format
@@ -202,7 +208,6 @@ function clues(){
 function leftclk(btn)
 { let SSS,rr,cc;
   btn="#"+btn;
-  console.log($(btn).text());
   switch(parseInt($(btn).text()))
     {
       case 0:
@@ -285,7 +290,9 @@ function leftclk(btn)
 // this function to find out how many cell in the grid with flag 
 // and return it
 function getflag(){
-  return $('.flag').length;
+  let num;
+  num=$('.flag').length;
+   $("#numbomb").text(10-num);
 }
 
 // this function to diable enable right and left click
@@ -297,7 +304,6 @@ function clickcontrol(btn){
  {
   let id;
     id="#c"+r+c;
-    console.log($(id).attr("class"));
     if($(id).hasClass('closed')=== true)
       return true;
       else 
@@ -307,7 +313,8 @@ function clickcontrol(btn){
 
 function open(cc,rr) {
 // create 2d array 
-
+cc=parseInt(cc);
+rr=parseInt(rr);
 
 if(isclosed(cc,rr)===false)return;
   let m;
@@ -352,17 +359,17 @@ let m;
       return false;
     }
 
-      m=thisCube[z][x];
+      
       if(thisCube[z][x]==null)
         return false;
     if(thisCube[z][x]==10)
         return false;
-
-    else if(thisCube[z][x]!==0){
-    thisCube[z][x]=null;
+    m=thisCube[z][x];
+     if(thisCube[z][x]!==0){
+    // thisCube[z][x]=null;
     revealcell(x,z);
-
     return false}
+
     thisCube[z][x]=null;
     revealcell(x,z);
     destroyAdjacentTiles(x-1, z,thisCube);
@@ -375,6 +382,7 @@ let m;
 
   function revealcell(r,c)
   {
+    getflag();
     let id;
     id="#c"+r+c;
     if($(id).text()==0){
@@ -409,5 +417,13 @@ let m;
   }
 
   function checkwinner(){
-  return $('.closed').length;
+   var audio5 = new Audio('images/won.wav');  
+  if($('.closed').length===10){
+    window.alert(`Congratulation you won . You finished the game in ${timestring} `);
+  $('#grid').empty().append('<img src="images/WIN.png">').addClass('grow');
+  clickcontrol();
+  lost=true;
+  audio5.play();
+  clearTimeout(timer);
+  }
 }
