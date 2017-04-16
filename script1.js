@@ -1,10 +1,12 @@
+// onload every thing will be ready to start
 window.onload = function() {
   // function to add on right click function and left click
    // function on the grid's cells
   clklistener();
   // this function initialize the cells in the grid to zero
   initialize();
-  // start the timing with the first click on the grid
+  // if it's not the end of the game, start the timing with 
+  // the first right or left click on the grid 
   if(!lost){
   $( "#grid" ).one( "click", starttime);
  $( "#grid" ).one( "contextmenu", starttime);}
@@ -22,48 +24,47 @@ let mines=10;
 var timer;
 // start with no game no lost
 var lost=false;
-
+// where the time string is stored
 let timestring;
 
 
 
 // right clk listener 
 function clklistener(){
-
-  // let all of the squares in the grid listen
-  // for right click and toggle between  flag 
-  // and closed classes which change the button BG
-
+  // coonect the sounds to the clicks
   var audio1 = $("#clicksound")[0];
   var audio2 = $("#rightclick")[0];
   var audio3 = $("#bombsound")[0];
   let btn;
-  // righ click function
+  // righ click function:let all of the squares in the grid listen
+  // for right click and toggle between  flag 
+  // and closed classes which change the button BG
   $('.square').on('contextmenu', function(){
     // store the id of the clicked square
     btn=$(this).attr("id");
     // toggle between classes to change the BG
     $(this).toggleClass( "flag", "closed");
-    // get the number of elements with flag 
-    // class then subtract the result from 10
+    // update number of flags in the counter
     getflag();
+    // play sound with click
     audio2.play();
   });
 
 
   // left click function
   $('.square').on('click', function(){
+    // play a sound with each click
     audio1.play();
     // store the id of the clicked square
     btn=$(this).attr("id");
-    //open the cell by removing the class with the button BG
-    // change the BG
-    // $(this).removeClass("closed");
-    // call function get the BG  that suitable to the cell value
+    // call function to get the BG  that suitable to the cell value
     leftclk(btn);
+    //update number of flags in the counter
     getflag();
+    // chech for winning condition
     checkwinner();
-
+    // if the used clicked square will value 10 = bombmake bombing
+     // sound
     if($(this).text()==10)
     {
       audio3.play();
@@ -72,8 +73,7 @@ function clklistener(){
 
   // smily button to reset the game
   $('#resetbtn').click(function () {
-  window.location.reload();
-
+    window.location.reload();
   });
 }
 
@@ -93,51 +93,55 @@ var sec = 0;
 var min=0
 let s=0;
 let m=0;
-  function starttime () {
-    //increment the second by 1
-    
-    // this condition was added to 
-    // include the case when the user 
-    // click mine right from the begining
-    if(!lost)
-     sec++; 
-    timer=setTimeout ( "starttime()", 1000 );
-    // after 60 seconds increment the minutes set the 
-    // seconds back to zero
-    if(sec>60)
-    {
-      sec=0;
-      min++;
-    }
-    // get the numbers in 00 format then return them back to the timer
-    m=pad(min);
-    s=pad(sec);
-    timestring=`${m}:${s}`
-    $('#time').text(timestring);
-  }
 
-  // this function create 00 format
-  function pad(n) {
-    return (n < 10) ? ("0" + n) : n;
+// time display function
+function starttime () {
+  //increment the second by 1
+  // this condition was added to 
+  // include the case when the user 
+  // click mine right from the begining
+  if(!lost)
+   sec++; 
+  timer=setTimeout ( "starttime()", 1000 );
+  // after 60 seconds increment the minutes set the 
+  // seconds back to zero
+  if(sec>60)
+  {
+    sec=0;
+    min++;
+  }
+  // get the numbers in 00 format then return them back to the timer
+  m=twodigit(min);
+  s=twodigit(sec);
+  timestring=`${m}:${s}`;
+  $('#time').text(timestring);
+}
+
+// this function create 00 format
+function twodigit(n) {
+  return (n < 10) ? ("0" + n) : n;
 }
 
 // distribute the mines randomly in the grid and display 
 // the numbers around the mines
 function randgene(){
-      var rand;
-      for(let i=0;i<10;i++){
-        // get random number as an index to put the mines
-        rand=randcheck();
-        // store the mine by putting 10 in square text
-        $('.square').eq(rand).text(10).css('text-indent', '-10000px').css('overflow', 'hidden');
-      }
-      // get the numbers that surround the mines
-      clues();
+  var rand;
+  for(let i=0;i<10;i++){
+    // get random number as an index to put the mines
+    rand=randcheck();
+    // store the mine by putting 10 in square text then hide
+    // the numbers using indentation.
+    $('.square').eq(rand).text(10).css('text-indent', '-10000px').css('overflow', 'hidden');
+  }
+  // get the numbers that surrounds the mines
+  clues();
 }
-// generate the random numbers for mines location
-// global variable to store the random number inside
-// to compare it and make sure it's not already exist
+
+
+// global variable to store the history of the random numbers 
+// to compare it and make sure it's not already exist (repeated)
 var holder=[];
+// generate the random numbers for mines location
 function randcheck(rand)
 {
   let found=0;
@@ -201,7 +205,6 @@ function clues(){
       i++;  
     }    
   }
-
 }
 
 // function to handel left click cases.
@@ -210,6 +213,8 @@ function leftclk(btn)
   btn="#"+btn;
   switch(parseInt($(btn).text()))
     {
+      // if the user clicked on empty space the grid will
+      // be open
       case 0:
        cc=btn[2];
        rr=btn[3];
@@ -270,25 +275,25 @@ function leftclk(btn)
       // disable the right and left clicks in the cell
       clickcontrol(btn);
       break;
-
+       //when the user click on bomb
       case 10:
+      // display bomb
       $(btn).removeClass("closed").addClass( "clickedbomb" );
+      // change the picture of happy face to sad face
       $("#resetbtn").removeClass("happy").addClass("sad");
-      // disable the right and left clicks in the grid
+      // open all the grid
       revealall();
-      $(".square").off('click');
-      //window.alert("you lost, Press reset to restart");
+      // disable the right and left clicks in the grid
+      clickcontrol(btn);
       // stop the timer
       lost=true;
       clearTimeout(timer);
-
       break;
 
       default: 
     }
   }
 // this function to find out how many cell in the grid with flag 
-// and return it
 function getflag(){
   let num;
   num=$('.flag').length;
@@ -300,6 +305,8 @@ function clickcontrol(btn){
   $(btn).off('click');
   $(btn).off('contextmenu');
 }
+
+// this function to check if the cell is closed or not
  function isclosed(r,c)
  {
   let id;
@@ -310,17 +317,17 @@ function clickcontrol(btn){
         return false;
  }
 
-
+// this function to openup the cells when click on empty cell
 function open(cc,rr) {
-// create 2d array 
-cc=parseInt(cc);
-rr=parseInt(rr);
-
-if(isclosed(cc,rr)===false)return;
+  // create 2d array 
+  cc=parseInt(cc);
+  rr=parseInt(rr);
+  // if the cell already openned exist
+  if(isclosed(cc,rr)===false)return;
   let m;
   let bigarray=[];
 
-
+  // create empty array
   for(var c = 0; c < 8; c++){
     bigarray[c] = [];    
     for(var r = 0; r < 8; r++){ 
@@ -329,101 +336,120 @@ if(isclosed(cc,rr)===false)return;
   }
   let i=0;
   // feed the new 2d array with the grid cells
-  
-// get the data from the original div in number format
+  // get the data from the original div in number format
   for(var c = 0; c < 8; c++){   
     for(var r = 0; r < 8; r++){ 
       bigarray[r][c]=parseInt($('.square').eq(i).text()); 
       i++;  
     }    
   }
-  
-var audio4 = new Audio('images/TaDa.wav');
-audio4.play();
-destroyAdjacentTiles(cc,rr,bigarray);
-}
+  // display a sound when opening cell
+  var audio4 = new Audio('images/TaDa.wav');
+  audio4.play();
+  openup(cc,rr,bigarray);
+  }
 
-function destroyAdjacentTiles(x,z, thisCube) {
-let m;
-    if(x<0){
-      return false;
-    }
-    
-    if(x>8){
-      return false;
-    }
-    if(z<0){
-      return false;
-    }
-    if(z>8){
-      return false;
-    }
-
-      
-      if(thisCube[z][x]==null)
-        return false;
-    if(thisCube[z][x]==10)
-        return false;
-    m=thisCube[z][x];
-     if(thisCube[z][x]!==0){
-    // thisCube[z][x]=null;
+function openup(x,z, thisCube) {
+  let m;
+  // bound cases
+  if(x<0){
+    return false;
+  }
+  if(x>8){
+    return false;
+  }
+  if(z<0){
+    return false;
+  }
+  if(z>8){
+    return false;
+  }
+  // if the cell is opened before
+  if(thisCube[z][x]==null)
+    return false;
+  // if there is a bomb
+  if(thisCube[z][x]==10)
+    return false;
+  m=thisCube[z][x];
+  // if the cell is number
+  if(thisCube[z][x]!==0){
+    //open the cell
     revealcell(x,z);
-    return false}
-
+    return false;}
+    // set cell value to cell
     thisCube[z][x]=null;
+    // open the cell
     revealcell(x,z);
-    destroyAdjacentTiles(x-1, z,thisCube);
-    destroyAdjacentTiles(x+1, z,thisCube);
-    destroyAdjacentTiles(x, z-1,thisCube);
-    destroyAdjacentTiles(x, z+1,thisCube);
+    // repeate this process for four direction
+    // recursive function
+    openup(x-1, z,thisCube);
+    openup(x+1, z,thisCube);
+    openup(x, z-1,thisCube);
+    openup(x, z+1,thisCube);
 
     return true;
 }
 
-  function revealcell(r,c)
-  {
-    getflag();
-    let id;
-    id="#c"+r+c;
-    if($(id).text()==0){
-    $(id).removeClass("closed flag");
-    clickcontrol(id)
+// open one cell
+function revealcell(r,c)
+{
+  // update the flag counter
+  getflag();
+  let id;
+  id="#c"+r+c;
+  // open the empty cells
+  if($(id).text()==0){
+  $(id).removeClass("closed flag");
+  // disable the right and left click
+  clickcontrol(id)
+}
+  else{
+    // open the cells that has number
+    leftclk(id.substr(1))
   }
-    else{
-    leftclk(id.substr(1))}
-  }
+}
 
-  function revealall()
-  { let value;
-    let i=0 , s=0;
-    for(let i=0;i<64;i++){
-      value=parseInt($('.square').eq(i).text());
-       $(".square").eq(i).removeClass("flag");
-      if(value!==10 && value!==0 )
-      {
-       leftclk($(".square").eq(i).attr("id"));
-       s++;
-      }
-      if(value===10)
-      {
-        clickcontrol(".square");
-        $(".square").eq(i).removeClass("closed").addClass( "bomb" ); 
-      }
-      if(value===0)
-      {
-        $(".square").eq(i).removeClass("closed"); 
-      }
+// this function open all the cells
+function revealall()
+{ let value;
+  let i=0 , s=0;
+  for(let i=0;i<64;i++){
+    value=parseInt($('.square').eq(i).text());
+    $(".square").eq(i).removeClass("flag");
+    // the value of the cell is number
+    if(value!==10 && value!==0 )
+    {
+      leftclk($(".square").eq(i).attr("id"));
+      s++;
+    }
+    // if the cell had bomb
+    if(value===10)
+    {
+      clickcontrol(".square");
+      $(".square").eq(i).removeClass("closed").addClass( "bomb" ); 
+    }
+    // if the cell is empty
+    if(value===0)
+    {
+      $(".square").eq(i).removeClass("closed"); 
     }
   }
+}
 
-  function checkwinner(){
-   var audio5 = new Audio('images/won.wav');  
+function checkwinner(){
+  // display winner sound
+  var audio5 = new Audio('images/won.wav');
+  // if what's left is 10 cells closed
   if($('.closed').length===10){
+    // display alert sound
     window.alert(`Congratulation you won . You finished the game in ${timestring} `);
-  $('#grid').empty().append('<img src="images/WIN.png">').addClass('grow');
-  clickcontrol();
-  lost=true;
-  audio5.play();
-  clearTimeout(timer);
+    // remove all the grid cells and display picture instead
+    $('#grid').empty().append('<img src="images/WIN.png">').addClass('grow');
+    // disable right and left click
+    clickcontrol();
+    lost=true;
+    audio5.play();
+    // stop the timer
+    clearTimeout(timer);
   }
 }

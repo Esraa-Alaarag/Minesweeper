@@ -4,11 +4,13 @@
 	margin:0;
 	padding:0;
 }
+/*adding backgroud*/
 body{
 	background-image: url('images/bg1.png'); 
 	background-size: cover;	
 	background-repeat: no-repeat;
 }
+/*Game title*/
 h1
 {
 	color: darkred;
@@ -19,13 +21,14 @@ h1
 	text-shadow: 3px 0px 0px gray;
 	letter-spacing: 5px;
 }
+/* over all wrapper*/
 #wrapper{
 	position: relative;
 	margin: 0 auto;
 	display: flex;
 
 }
-
+/*====================Game styling======================*/
 #game{
 	padding: 5px;
 	margin: 0 auto;
@@ -36,26 +39,7 @@ h1
 	flex:1.5;
 	justify-content: center;
 	margin-left: 10%;
-	}
-	#instruction{
-	text-shadow: 3px 0px 0px gray;
-	padding: 30px;
-	height: auto;
-	width: 400px ;
-	margin-top: 1%;
-	border:2px solid gray;
-	box-sizing: border-box; 
-	border-style: outset;
-	border-radius: 30px;
-	background: url('images/bg2.jpg');
-	flex:1;
-	margin-right: 10%;
-	}
-	p{
-		line-height: 35px;
-		font-size: 25px;
-		font-family: 'Josefin Slab', serif;
-	}
+}
 
 #grid{
 	width: 437px;
@@ -68,11 +52,8 @@ h1
 	border-style: outset;
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
-	}
-img{
-	width: 400px;
-	height: 400px;
 }
+
 
 .panel{
 	width: 437px;
@@ -86,28 +67,34 @@ img{
 	border-style: outset;
 	border-top-left-radius: 30px;
 	border-top-right-radius: 30px;
-	
-	}
+}
+/*winning image*/
+img{
+	width: 400px;
+	height: 400px;
+}
+
+/*=====================classes styling===================== */
 #smily{
 	
 	border:3px solid gray;
 	display:inline-block; 
 	margin: 0 auto; 
-	}
+}
 .happy{
 	height: 60px;
 	width: 60px;
 	background: #fff;
 	background-image: url('images/smilyhappy.png'); 
 	background-size: cover;	
-	}
+}
 .sad{
 	height: 60px;
 	width: 60px;
 	background: #fff;
 	background-image: url('images/sad.png'); 
 	background-size: cover;	
-	}
+}
 
 .cool{
 	height: 60px;
@@ -129,7 +116,7 @@ img{
 	font-size: 25px;
 	padding-top: 5%;
 	border-style: inset;
-	}
+}
 #numbomb{
 	height: 60px;
 	width: 100px;
@@ -143,14 +130,13 @@ img{
 	font-size: 25px;
 	padding-top: 5%;
 	border-style: inset;
-	}
+}
 .column{
 
 	width: 50px;
 	float:left;
 	height: 430px;
-	font-size: 30px;
-	}
+	font-size: 30px;}
 .icon{
 	border:1px solid black;
 	width: 50px;
@@ -165,7 +151,7 @@ img{
 	box-sizing: border-box;
 	text-align: center;
 	background: rgb(171,171,171);
-	}
+}
 .closed{
 	width: 50px;
 	height: 50px;
@@ -180,56 +166,80 @@ img{
 .one{
 	background-image: url('images/1.png'); 
 	background-size: cover;	
-	}
+}
 .two{
 	background-image: url('images/2.png'); 
 	background-size: cover;	
-	}
+}
 .three{
 	background-image: url('images/3.png'); 
 	background-size: cover;	
-	}
+}
 .four{
 	background-image: url('images/4.png'); 
 	background-size: cover;	
-	}
+}
 .five{
 	background-image: url('images/5.png'); 
 	background-size: cover;	
-	}
+}
 .six{
 	background-image: url('images/6.png'); 
 	background-size: cover;	
-	}
+}
 .seven{
 	background-image: url('images/7.png'); 
 	background-size: cover;	
-	}
+}
 .eight{
 	background-image: url('images/8.png'); 
 	background-size: cover;	
-	}
+}
 .bomb{
 	background-image: url('images/bomb.png'); 
 	background-size: cover;	
-	}
+}
 .clickedbomb{
 	background-image: url('images/clickedbomb.png'); 
 	background-size: cover;	
-	}
+}
 .flag{
 	background-image: url('images/flag.png'); 
 	background-size: cover;	
-	}
-
-	@media screen and (max-width: 1200px) {
-    
-
-
+}
+/* styling instructions*/
+#instruction{
+	text-shadow: 3px 0px 0px gray;
+	padding: 30px;
+	height: auto;
+	width: 400px ;
+	margin-top: 1%;
+	border:2px solid gray;
+	box-sizing: border-box; 
+	border-style: outset;
+	border-radius: 30px;
+	background: url('images/bg2.jpg');
+	flex:1;
+	margin-right: 10%;
+}
+#content{
+	background: rgba(255,255,255,.3);
+	border-radius: 30px;
+	padding: 10px;
+}
+p{
+	line-height: 35px;
+	font-size: 25px;
+	font-family: 'Josefin Slab', serif;
+    font-weight: 900;
+}
+/*when the picture and the game can't sit 
+next to each other bcause of minimizing 
+the screen but the instruction beneath the game*/
+@media screen and (max-width: 1200px) {
     #instruction {
         display: block;
         margin: 0 auto;
-
     }
     #game {
         display: block;

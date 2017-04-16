@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<!-- Minesweeper by Esraa Alaarag -->
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Mine sweeper</title>
+	<!-- adding image in the browser tab -->
 	<link rel="icon" href="images/bomb.png">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -10,121 +12,118 @@
 </head>
 <body>
 <h1>MineSweeper</h1>
-<div id="wrapper">
-	<div id="game">
-		<div class="panel">
-			<div id="numbomb">10</div>
-			<div id="smily" ><input id="resetbtn" class="happy" type="reset" name="smiley"></input></div>
-			<div id="time">00:00</div>
+<!-- over all wrapper -->
+	<div id="wrapper">
+		<!-- game part -->
+		<div id="game">
+			<!-- display part -->
+			<div class="panel">
+				<!-- display number of flags is used -->
+				<div id="numbomb">10</div>
+				<!-- reset btn -->
+				<div id="smily" ><input id="resetbtn" class="happy" type="	reset" name="smiley"></div>
+				<!-- time display -->
+				<div id="time">00:00</div>
+			</div>
+			<div id="grid">
+				<div class="column">
+					<div id="c00" class="square"></div>
+					<div id="c01" class="square"></div>
+					<div id="c02" class="square"></div>
+					<div id="c03" class="square"></div>
+					<div id="c04" class="square"></div>
+					<div id="c05" class="square"></div>
+					<div id="c06" class="square"></div>
+					<div id="c07" class="square"></div>
+					
+				</div>
+				<div class="column">
+					<div id="c10" class="square"></div>
+					<div id="c11" class="square"></div>
+					<div id="c12" class="square"></div>
+					<div id="c13" class="square"></div>
+					<div id="c14" class="square"></div>
+					<div id="c15" class="square"></div>
+					<div id="c16" class="square"></div>
+					<div id="c17" class="square"></div>
+				</div>
+				<div class="column">
+					<div id="c20" class="square"></div>
+					<div id="c21" class="square"></div>
+					<div id="c22" class="square"></div>
+					<div id="c23" class="square"></div>
+					<div id="c24" class="square"></div>
+					<div id="c25" class="square"></div>
+					<div id="c26" class="square"></div>
+					<div id="c27" class="square"></div>
+				</div>
+				<div class="column">
+					<div id="c30" class="square"></div>
+					<div id="c31" class="square"></div>
+					<div id="c32" class="square"></div>
+					<div id="c33" class="square"></div>
+					<div id="c34" class="square"></div>
+					<div id="c35" class="square"></div>
+					<div id="c36" class="square"></div>
+					<div id="c37" class="square"></div>
+				</div>
+				<div class="column">
+					<div id="c40" class="square"></div>
+					<div id="c41" class="square"></div>
+					<div id="c42" class="square"></div>
+					<div id="c43" class="square"></div>
+					<div id="c44" class="square"></div>
+					<div id="c45" class="square"></div>
+					<div id="c46" class="square"></div>
+					<div id="c47" class="square"></div>
+				</div>
+				<div class="column">
+					<div id="c50" class="square"></div>
+					<div id="c51" class="square"></div>
+					<div id="c52" class="square"></div>
+					<div id="c53" class="square"></div>
+					<div id="c54" class="square"></div>
+					<div id="c55" class="square"></div>
+					<div id="c56" class="square"></div>
+					<div id="c57" class="square"></div>
+				</div>
+				<div class="column">
+					<div id="c60" class="square"></div>
+					<div id="c61" class="square"></div>
+					<div id="c62" class="square"></div>
+					<div id="c63" class="square"></div>
+					<div id="c64" class="square"></div>
+					<div id="c65" class="square"></div>
+					<div id="c66" class="square"></div>
+					<div id="c67" class="square"></div>
+				</div>
+				<div class="column">
+					<div id="c70" class="square"></div>
+					<div id="c71" class="square"></div>
+					<div id="c72" class="square"></div>
+					<div id="c73" class="square"></div>
+					<div id="c74" class="square"></div>
+					<div id="c75" class="square"></div>
+					<div id="c76" class="square"></div>
+					<div id="c77" class="square"></div>
+					
+				</div>
+			</div>
 		</div>
-		<div id="grid">
-			<div class="column">
-				<div id="c00" class="square"></div>
-				<div id="c01" class="square"></div>
-				<div id="c02" class="square"></div>
-				<div id="c03" class="square"></div>
-				<div id="c04" class="square"></div>
-				<div id="c05" class="square"></div>
-				<div id="c06" class="square"></div>
-				<div id="c07" class="square"></div>
-				
+		<!-- instruction display -->
+		<div id="instruction">
+			<div id="content">
+				<h1>Instructions</h1>
+				<p>The purpose of the game is to open all the cells of the board which do not contain a bomb. You lose if you set off a bomb cell.
+				Every non-bomb cell you open will tell you the total number of bombs in the eight neighboring cells. Once you are sure that a cell contains a bomb, you can right-click to put a flag it on it as a reminder. 
+				To start a new game (abandoning the current one), just click on the yellow face button.
+				Happy mine hunting!</p>
 			</div>
-			<div class="column">
-				<div id="c10" class="square"></div>
-				<div id="c11" class="square"></div>
-				<div id="c12" class="square"></div>
-				<div id="c13" class="square"></div>
-				<div id="c14" class="square"></div>
-				<div id="c15" class="square"></div>
-				<div id="c16" class="square"></div>
-				<div id="c17" class="square"></div>
-			</div>
-			<div class="column">
-				<div id="c20" class="square"></div>
-				<div id="c21" class="square"></div>
-				<div id="c22" class="square"></div>
-				<div id="c23" class="square"></div>
-				<div id="c24" class="square"></div>
-				<div id="c25" class="square"></div>
-				<div id="c26" class="square"></div>
-				<div id="c27" class="square"></div>
-				
-			</div>
-			<div class="column">
-				<div id="c30" class="square"></div>
-				<div id="c31" class="square"></div>
-				<div id="c32" class="square"></div>
-				<div id="c33" class="square"></div>
-				<div id="c34" class="square"></div>
-				<div id="c35" class="square"></div>
-				<div id="c36" class="square"></div>
-				<div id="c37" class="square"></div>
-				
-			</div>
-			<div class="column">
-				<div id="c40" class="square"></div>
-				<div id="c41" class="square"></div>
-				<div id="c42" class="square"></div>
-				<div id="c43" class="square"></div>
-				<div id="c44" class="square"></div>
-				<div id="c45" class="square"></div>
-				<div id="c46" class="square"></div>
-				<div id="c47" class="square"></div>
-				
-			</div>
-			<div class="column">
-				<div id="c50" class="square"></div>
-				<div id="c51" class="square"></div>
-				<div id="c52" class="square"></div>
-				<div id="c53" class="square"></div>
-				<div id="c54" class="square"></div>
-				<div id="c55" class="square"></div>
-				<div id="c56" class="square"></div>
-				<div id="c57" class="square"></div>
-				
-			</div>
-			<div class="column">
-				<div id="c60" class="square"></div>
-				<div id="c61" class="square"></div>
-				<div id="c62" class="square"></div>
-				<div id="c63" class="square"></div>
-				<div id="c64" class="square"></div>
-				<div id="c65" class="square"></div>
-				<div id="c66" class="square"></div>
-				<div id="c67" class="square"></div>
-				
-			</div>
-			<div class="column">
-				<div id="c70" class="square"></div>
-				<div id="c71" class="square"></div>
-				<div id="c72" class="square"></div>
-				<div id="c73" class="square"></div>
-				<div id="c74" class="square"></div>
-				<div id="c75" class="square"></div>
-				<div id="c76" class="square"></div>
-				<div id="c77" class="square"></div>
-				
-			</div>
-			
 		</div>
 	</div>
-	<div id="instruction">
-	<h1>Instructions</h1>
-	<p>The purpose of the game is to open all the cells of the board which do not contain a bomb. You lose if you set off a bomb cell.</p>
-	<p>Every non-bomb cell you open will tell you the total number of bombs in the eight neighboring cells. Once you are sure that a cell contains a bomb, you can right-click to put a flag it on it as a reminder. </p>
-	<p>To start a new game (abandoning the current one), just click on the yellow face button.</p>
-	<p>Happy mine hunting!</p>
-
-	</div>
-</div>
-	<audio id="clicksound" preload="auto">
-    <source src="images/click.wav"></source>
-</audio>
-<audio id="rightclick" preload="auto">
-    <source src="images/rclick.wav"></source>
-</audio>
-<audio id="bombsound" preload="auto">
-    <source src="images/Bomb.wav"></source>
-</audio>
+	<!-- music used in on events -->
+	<audio id="clicksound" preload="auto"><source src="images/click.wav"></source></audio>
+	<audio id="rightclick" preload="auto"><source src="images/rclick.wav"></source>	</audio>
+	<audio id="bombsound" preload="auto"><source src="images/Bomb.wav"></source></audio>
 </body>
 </html>
