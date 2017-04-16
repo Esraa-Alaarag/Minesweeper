@@ -33,7 +33,7 @@ h1
 	width: 400px;
 	margin-top: 1%;
 	box-sizing: border-box; 
-	flex:1;
+	flex:1.5;
 	justify-content: center;
 	margin-left: 10%;
 	}
@@ -221,3 +221,23 @@ img{
 	background-image: url('images/flag.png'); 
 	background-size: cover;	
 	}
+
+	@media screen and (max-width: 1200px) {
+    
+
+
+    #instruction {
+        display: block;
+        margin: 0 auto;
+
+    }
+    #game {
+        display: block;
+        margin: 0 auto;
+    }
+    #wrapper{
+	position: relative;
+	margin: 0 auto;
+	display: block;
+
+}
