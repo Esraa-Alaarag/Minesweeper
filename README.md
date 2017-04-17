@@ -5,7 +5,7 @@
 The Minesweeper game is controlled only by mouse. user can click left or right clicks. Right click opens a cell . Left click puts a flag on the cell as a reminder that a bomb=10 might be underneath the cell.To remove a flag click right click again 
 A cell can contain a number(1,2,3,4,5,6,7,8) or it can be blank=0. The number indicates how many mines are adjacent to this particular cell. 
 
-##Technologies used
+## Technologies used
 The program was written useing html , css, JS and JQuary 
 
 ## Approach taken
@@ -14,7 +14,7 @@ On start the program will grap all the cells by selecting `.square` class. all t
 A cell can be surrounded by maximum of 8 bombs, so we need images for numbers  1-8.also  We need images for a covered cell, a bomb, a exploded mine . an image when game is over, a flag. There is a Class for each one (One, Two, Three, Four, Five, Six, Seven, Eight, bomb, clicked, Flag, open,closed).
 
 
-## Adding number clues on adjacent cells
+## Display the numbers in the cells adjacent to a bomb
 Here is the algorithm in pseudocode:
 * create larger table so for example if the original grid is 8x8 create 10x10 to solve the bound problem.
 * feed the larger table with the original grid.
@@ -24,6 +24,9 @@ Here is the algorithm in pseudocode:
 * Add 1 to the contents of the cell.
 * Return the values back to the original place.
 ![MacDown Screenshot](images/CLUE.PNG)
+
+## Open adjacent empty cells
+The function is smiliar to the prevoius function but I did not have to check in 8 direction instead I checked 4 directions because the function is recursive so even I'm checking 4 direction all other cells will be cleared eventually.
 
 
 upon user click the a class will be remove and/or added or toggles. which will control the display of the cell. and the mouse click will be disabled on that clicked cell. The timer will start when clicking left or right on the grid.
