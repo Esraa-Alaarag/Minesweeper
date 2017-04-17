@@ -63,7 +63,7 @@ To start a new game (abandoning the current one), just click on the yellow face 
 Happy mine hunting!
 
 ## Testing
-The game was given to 8 years old boy to test and find the glitches then I solved all the found glitches. 
+The game was given to 8 years old child to test and find the glitches then I solved all the found glitches. 
 
 ## Unsolved problems
 I was supposed to use a class I did not use it because it did not work with 2d array intially and the logic was so complicated that it took too much time espcially the recursive function. I did not find enough time to rewrite the program using the classes.
