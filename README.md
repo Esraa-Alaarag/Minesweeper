@@ -13,6 +13,16 @@ On start the program will grap all the cells by selecting `.square` class. all t
 
 A cell can be surrounded by maximum of 8 bombs, so we need images for numbers  1-8.also  We need images for a covered cell, a bomb, a exploded mine . an image when game is over, a flag. There is a Class for each one (One, Two, Three, Four, Five, Six, Seven, Eight, bomb, clicked, Flag, open,closed).
 
+
+## Adding number clues on adjacent cells
+Here is the algorithm in pseudocode:
+* create larger table so for example if the original grid is 8x8 create 10x10 to solve the bound problem.
+* feed the larger table with the original grid.
+* For each cell that has a mine at row r and column c.
+* Loop for all rows r-1, r, r+1.
+* Loop for all columns c-1, c, c+1 If the cell has no mine.
+* Add 1 to the contents of the cell.
+* Return the values back to the original place.
 ![MacDown Screenshot](images/CLUE.PNG)
 
 
