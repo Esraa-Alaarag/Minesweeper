@@ -12,6 +12,7 @@ The program was written useing html , css, JS and JQuary
 On start the program will grap all the cells by selecting `.square` class. all the divs will have `text=0` intially . The a random function will be called to distribute the bomb randomly in the grid by setting the `text=10` . Then another function will be called to generate the number clues which surrounds each bomb `text=any value from 1-8`.
 
 A cell can be surrounded by maximum of 8 bombs, so we need images for numbers  1-8.also  We need images for a covered cell, a bomb, a exploded mine . an image when game is over, a flag. There is a Class for each one (One, Two, Three, Four, Five, Six, Seven, Eight, bomb, clicked, Flag, open,closed).
+![MacDown Screenshot](images/CLUE.png)
 upon user click the a class will be remove and/or added or toggles. which will control the display of the cell. and the mouse click will be disabled on that clicked cell. The timer will start when clicking left or right on the grid.
 
 when clicking empty cell the surrounded cells `if = 0` will open up until a number or bomb or bound is reached useing recursive function.
