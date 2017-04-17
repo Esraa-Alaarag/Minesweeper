@@ -8,8 +8,13 @@ window.onload = function() {
   // if it's not the end of the game, start the timing with 
   // the first right or left click on the grid 
   if(!lost){
-  $( "#grid" ).one( "click", starttime);
- $( "#grid" ).one( "contextmenu", starttime);}
+  $( "#grid" ).one( "click contextmenu", starttime);
+$( "#grid" ).on( "click contextmenu", function( event ) {
+  starttime
+  $( this ).off( "click contextmenu" );
+});
+
+}
   document.oncontextmenu = function() {
     return false;
 }
@@ -17,6 +22,40 @@ window.onload = function() {
 
 };
 
+// clock class
+class Clock {
+  constructor() {
+    this.mintue = 0;
+    this.second = 0;
+    this.text="";
+  }
+
+  time() {
+    //increment the second by 1 if it's not the end of the game
+    if(!lost) 
+    this.second++;
+    // after 60 seconds increment the minutes set the 
+    // seconds back to zero
+    if(this.second>60)
+    {
+      this.second=0;
+      this.mintue++;
+    }
+    // get the numbers in 00 format then return them as a string
+    let m=this.twodigit(this.mintue);
+    let s=this.twodigit(this.second);
+    return this.text=`${m}:${s}`;
+  }
+
+  // this function create 00 format
+  twodigit(n){
+  return (n < 10) ? ("0" + n) : n;
+  }
+}
+
+
+// new timing object
+let timing = new Clock();
 // global variables
 // number of mines
 let mines=10;
@@ -88,39 +127,14 @@ function initialize(){
 }
 
 
-// set timers counters to zero
-var sec = 0;
-var min=0
-let s=0;
-let m=0;
-
 // time display function
-function starttime () {
-  //increment the second by 1
-  // this condition was added to 
-  // include the case when the user 
-  // click mine right from the begining
-  if(!lost)
-   sec++; 
-  timer=setTimeout ( "starttime()", 1000 );
-  // after 60 seconds increment the minutes set the 
-  // seconds back to zero
-  if(sec>60)
-  {
-    sec=0;
-    min++;
-  }
-  // get the numbers in 00 format then return them back to the timer
-  m=twodigit(min);
-  s=twodigit(sec);
-  timestring=`${m}:${s}`;
+function starttime() {
+  // calling the function every 1 second
+  timer=setTimeout ( 'starttime()', 1000 );
+  timestring=timing.time();
   $('#time').text(timestring);
 }
 
-// this function create 00 format
-function twodigit(n) {
-  return (n < 10) ? ("0" + n) : n;
-}
 
 // distribute the mines randomly in the grid and display 
 // the numbers around the mines
@@ -142,13 +156,14 @@ function randgene(){
 // to compare it and make sure it's not already exist (repeated)
 var holder=[];
 // generate the random numbers for mines location
-function randcheck(rand)
+function randcheck()
 {
+  var rand;
   let found=0;
   // make sure no number is repeated
   while(found!==-1){
     // get a number between 0 and 64
-    rand=(Math.floor(Math.random()*65));
+    rand=(Math.floor(Math.random()*64));
     // check if the number in repeated by looking in the array
     found=holder.indexOf(rand);
   }
@@ -453,3 +468,4 @@ function checkwinner(){
     clearTimeout(timer);
   }
 }
+
