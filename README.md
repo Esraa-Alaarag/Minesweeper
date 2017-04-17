@@ -25,7 +25,7 @@ Here is the algorithm in pseudocode:
 * Return the values back to the original place.
 ![MacDown Screenshot](images/CLUE.PNG)
 
-## Open adjacent empty cells
+## Opening adjacent empty cells
 The function is smiliar to the prevoius function but I did not have to check in 8 direction instead I checked 4 directions because the function is recursive so even I'm checking 4 direction all other cells will be cleared eventually.
 
 
