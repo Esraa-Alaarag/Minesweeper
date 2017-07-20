@@ -1,9 +1,12 @@
 <a name="goback">
-# MineSweeper
 
-## Live: https://esraa-alaarag.github.io/minesweeper/
+#  MineSweeper
 
-## Table of Contents
+
+##  Live: https://esraa-alaarag.github.io/minesweeper/
+
+
+##  Table of Contents
 
 1. [Game description](#appdescription)
 2. [User Stories](#userstories)
