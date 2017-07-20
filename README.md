@@ -1,5 +1,6 @@
 <a name="goback">
 # MineSweeper
+
 ## Live: https://esraa-alaarag.github.io/minesweeper/
 
 ## Table of Contents
@@ -12,17 +13,20 @@
 6. [Ways to see the project](#project)
 
 <a name="appdescription">
+
 ## Game Description :
 The goal of this game is to clear all the cells from a grid. if player clicks on the cell which contains a bomb, the bomb explodes and the game is over.The Minesweeper game is controlled only by mouse. Right click opens a cell. Left click puts a flag on the cell as a reminder that a bomb `text=10 ` might be there. To remove a flag, right click the cell again. A cell can contain a number from 1 to 8, or it can be blank `text=0`. The number indicates how many mines are adjacent to this particular cell.
 </a>
 
 <a name="userstories">
+
 ## User Stories
 
 *	As a newbie game player, I want to know the game instruction.*	As a player, I would like to reset my game any time during the game.*	As a player, I want to be able to flag or unflag any cell in the grid.*	As an expert player, I want to be able to see how it took me to finish the game.*	As a player, I want to see how much bomb left for me.
  </a>
  
 <a name="technologies">
+
 ##Technologies used
 This game was written using html, CSS, JavaScript, JQuery and Bootstrap
 </a>
@@ -47,6 +51,7 @@ On start the game will grab all the cells by selecting `.square` class. all th
 <a name="wireframesweb">
 
 ## Wireframes
+
 ### step1
 ![MacDown Screenshot](images/step1.png)
 
@@ -63,5 +68,6 @@ On start the game will grab all the cells by selecting `.square` class. all th
 ## SEE THE PROJECT:
 
 ### Live Deployment of App: https://esraa-alaarag.github.io/minesweeper/
+
 ### Github : https://github.com/Esraa-Alaarag/minesweeper.git
 
