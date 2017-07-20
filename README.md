@@ -3,7 +3,7 @@
 #  MineSweeper
 
 
-##  Live: https://esraa-alaarag.github.io/minesweeper/
+##  Live: https://esraa-alaarag.github.io/Minesweeper/
 
 
 ##  Table of Contents
@@ -73,5 +73,5 @@ On start the game will grab all the cells by selecting `.square` class. all th
 
 ### Live Deployment of App: https://esraa-alaarag.github.io/minesweeper/
 
-### Github : https://github.com/Esraa-Alaarag/minesweeper.git
+### Github : https://esraa-alaarag.github.io/Minesweeper/
 
