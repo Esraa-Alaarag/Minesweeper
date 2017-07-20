@@ -1,22 +1,26 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
-@import url('https://fonts.googleapis.com/css?family=Josefin+Slab|Righteous');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab');
+@import url('https://fonts.googleapis.com/css?family=Wendy+One');
 *{
 	margin:0;
 	padding:0;
 }
 /*adding backgroud*/
 body{
-	background-image: url('images/bg1.png'); 
+	background: url('images/bg1.png')no-repeat center center fixed; 
 	background-size: cover;	
-	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 /*Game title*/
-h1
+h1#title
 {
 	color: darkred;
 	text-align: center;
 	padding-top: 30px;
-	font-family: 'Josefin Slab', serif;
+	font-family: 'Wendy One', sans-serif;
 	font-size: 60px;
 	text-shadow: 3px 0px 0px gray;
 	letter-spacing: 5px;
@@ -25,8 +29,12 @@ h1
 #wrapper{
 	position: relative;
 	margin: 0 auto;
-	display: flex;
 
+}
+.btn{
+	display: block;
+	margin: 0 auto;
+	text-align: center;
 }
 /*====================Game styling======================*/
 #game{
@@ -36,9 +44,7 @@ h1
 	width: 400px;
 	margin-top: 1%;
 	box-sizing: border-box; 
-	flex:1.5;
-	justify-content: center;
-	margin-left: 10%;
+	display: block;
 }
 
 #grid{
@@ -53,7 +59,10 @@ h1
 	border-bottom-left-radius: 30px;
 	border-bottom-right-radius: 30px;
 }
-
+ span img{
+ 	height: 30px;
+ 	width: 30px;
+ }
 
 .panel{
 	width: 437px;
@@ -233,14 +242,14 @@ p{
 	font-family: 'Josefin Slab', serif;
     font-weight: 900;
 }
+.modal-body, .modal-header, .modal-footer
+{
+	background: #787467;
+}
 /*when the picture and the game can't sit 
 next to each other bcause of minimizing 
 the screen but the instruction beneath the game*/
 @media screen and (max-width: 1200px) {
-    #instruction {
-        display: block;
-        margin: 0 auto;
-    }
     #game {
         display: block;
         margin: 0 auto;

@@ -7,15 +7,17 @@
 	<!-- adding image in the browser tab -->
 	<link rel="icon" href="images/bomb.png">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	 <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="script1.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	
 </head>
 <body>
-<h1>MineSweeper</h1>
+<h1 id="title">Mine Sweeper<br><span><button type="button" class="btn btn-danger btn-lg " data-toggle="modal" data-target="#myModal">?</button></span></h1>
 <!-- over all wrapper -->
 	<div id="wrapper">
+		<div class="container">
 		<!-- game part -->
 		<div id="game">
+		
 			<!-- display part -->
 			<div class="panel">
 				<!-- display number of flags is used -->
@@ -109,21 +111,46 @@
 					
 				</div>
 			</div>
+
 		</div>
+
 		<!-- instruction display -->
-		<div id="instruction">
-			<div id="content">
-				<h1>Instructions</h1>
-				<p>The purpose of the game is to open all the cells of the board which do not contain a bomb. You lose if you set off a bomb cell.
-				Every non-bomb cell you open will tell you the total number of bombs in the eight neighboring cells. Once you are sure that a cell contains a bomb, you can right-click to put a flag it on it as a reminder. 
-				To start a new game (abandoning the current one), just click on the yellow face button.
-				Happy mine hunting!</p>
-			</div>
-		</div>
+
+		
+			  <!-- Trigger the modal with a button -->
+			  
+
+			  <!-- Modal -->
+			  <div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog" >
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			          <h4 class="modal-title">Instruction</h4>
+			        </div>
+			        <div class="modal-body">
+			          <p>The purpose of the game is to open all the cells of the board which do not contain a bomb <span><img src="images/bomb.png"> </span>. You lose if you set off a bomb cell.</p>
+						<p>Every non-bomb cell you open will tell you the total number of bombs in the eight neighboring cells . Once you are sure that a cell contains a bomb, you can right-click to put a flag <span><img src="images/flag.png"> </span> on it as a reminder.</p>
+						<p>To start a new game (abandoning the current one), just click on the yellow face <span><img src="images/smilyhappy.png"> </span> button.</p>
+						<p>Happy mine hunting!</p>
+			        </div>
+			        <div class="modal-footer">
+			          <button type="button" class="btn btn-danger btn-default" data-dismiss="modal">Close</button>
+			        </div>
+			      </div>
+			      
+			    </div>
+			  </div>
+  
+</div>
 	</div>
 	<!-- music used in on events -->
 	<audio id="clicksound" preload="auto"><source src="images/click.wav"></source></audio>
 	<audio id="rightclick" preload="auto"><source src="images/rclick.wav"></source>	</audio>
 	<audio id="bombsound" preload="auto"><source src="images/Bomb.wav"></source></audio>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="script1.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
