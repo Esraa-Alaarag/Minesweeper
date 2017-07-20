@@ -16,7 +16,8 @@ body{
 }
 /*Game title*/
 h1#title
-{
+{	position: relative;
+	left:20px;
 	color: darkred;
 	text-align: center;
 	padding-top: 30px;
