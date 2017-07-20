@@ -1,49 +1,50 @@
+<a name="goback">
 # MineSweeper
+## Live: https://esraa-alaarag.github.io/minesweeper/
 
-**Minesweeper** goal is to clear all the cells from a grid. If the player clicks on the cell which contains a bomb, the bomb explode and the game is over.
+## Table of Contents
 
-The Minesweeper game is controlled only by mouse. user can click left or right clicks. Right click opens a cell . Left click puts a flag on the cell as a reminder that a bomb=10 might be underneath the cell.To remove a flag click right click again 
-A cell can contain a number(1,2,3,4,5,6,7,8) or it can be blank=0. The number indicates how many mines are adjacent to this particular cell. 
+1. [Game description](#appdescription)
+2. [User Stories](#userstories)
+3. [Technologies used](#technologies)
+4. [Pseudocode](#pseudocode)
+5. [Wireframes Web Version](#wireframesweb)
+6. [Ways to see the project](#project)
 
-## Technologies used
-The program was written useing html , css, JS and JQuary 
+<a name="appdescription">
+## Game Description :
+The goal of this game is to clear all the cells from a grid. if player clicks on the cell which contains a bomb, the bomb explodes and the game is over.The Minesweeper game is controlled only by mouse. Right click opens a cell. Left click puts a flag on the cell as a reminder that a bomb `text=10 ` might be there. To remove a flag, right click the cell again. A cell can contain a number from 1 to 8, or it can be blank `text=0`. The number indicates how many mines are adjacent to this particular cell.
+</a>
 
-## Approach taken
-On start the program will grap all the cells by selecting `.square` class. all the divs will have `text=0` intially . The a random function will be called to distribute the bomb randomly in the grid by setting the `text=10` . Then another function will be called to generate the number clues which surrounds each bomb `text=any value from 1-8`.
-
-A cell can be surrounded by maximum of 8 bombs, so we need images for numbers  1-8.also  We need images for a covered cell, a bomb, a exploded mine . an image when game is over, a flag. There is a Class for each one (One, Two, Three, Four, Five, Six, Seven, Eight, bomb, clicked, Flag, open,closed).
-
-
-## Display the numbers in the cells adjacent to a bomb
-Here is the algorithm in pseudocode:
-* create larger table so for example if the original grid is 8x8 create 10x10 to solve the bound problem.
-* feed the larger table with the original grid.
-* For each cell that has a mine at row r and column c.
-* Loop for all rows r-1, r, r+1.
-* Loop for all columns c-1, c, c+1 If the cell has no mine.
-* Add 1 to the contents of the cell.
-* Return the values back to the original place.
-![MacDown Screenshot](images/CLUE.PNG)
-
-## Opening adjacent empty cells
-The function is smiliar to the prevoius function but I did not have to check in 8 direction instead I checked 4 directions because the function is recursive so even I'm checking 4 direction all other cells will be cleared eventually.
-
-
-upon user click the a class will be remove and/or added or toggles. which will control the display of the cell. and the mouse click will be disabled on that clicked cell. The timer will start when clicking left or right on the grid.
-
-when clicking empty cell the surrounded cells `if = 0` will open up until a number or bomb or bound is reached useing recursive function.
-
-After opening all the cells an alert will be displayed and a picture will be displayed.
-
+<a name="userstories">
 ## User Stories
 
-* As a newbie game player, I want to know who goes first so we can start the game.”
-* ”As a player, I would like to reset my game any time
-during the game.”;
-* ”As a player, I want to be able to flag or unflag any cell in the grid”;
-* ”As an expert player, I want to be able to see how much I took to finish the game”;
-* ”As a player, I want to see how much bomb left for me”;
+*	As a newbie game player, I want to know the game instruction.*	As a player, I would like to reset my game any time during the game.*	As a player, I want to be able to flag or unflag any cell in the grid.*	As an expert player, I want to be able to see how it took me to finish the game.*	As a player, I want to see how much bomb left for me.
+ </a>
+ 
+<a name="technologies">
+##Technologies used
+This game was written using html, CSS, JavaScript, JQuery and Bootstrap
+</a>
+<a name="pseudocode">
 
+## PSEUDOCODE:
+
+On start the game will grab all the cells by selecting `.square` class. all the divs will have `text=0` initially. A function called random will distribute the bomb randomly across the grid by setting `text=10`. Then another function will be called to generate the number clues which surrounds each bomb `text= (any value from 1-8)`.
+A cell can be surrounded by maximum of 8 bombs, so we need images for numbers 1 to 8. also, we need images for the covered cells, a bomb, an exploded mine. an image when game is over, a flag. There is a Class for each one One, Two, Three, Four, Five, Six, Seven, Eight, bomb, clicked, Flag, open, closed.### Displaying the numbers in the cells adjacent to a bomb
+Here is the algorithm in pseudocode:
+*	create larger table so for example if the original grid is 8x8 create 10x10 to solve the problem when the cells located in boundaries.*	feed the larger table with the original grid.*	For each cell that has a mine at row r and column c.*	Loop for all rows r-1, r, r+1.*	Loop for all columns c-1, c, c+1 If the cell has no mine.*	Add 1 to the contents of the cell.
+* Return the values back to the original grid. 
+![MacDown Screenshot](images/CLUE.png)
+
+### Opening adjacent empty cells
+The function is similar to the previous function but the program will not check in 8 directions. Instead, it will check only 4 directions because the function is recursive so even the program is checking 4 direction all other cells will be cleared eventually.
+when player clicks a cell, the call’s class will be remove and/or added or toggles. which will control the display of the cell. Then, the mouse click will be disabled on that clicked cell. The timer will start with the first right or left click on the grid.
+When player clicks empty cell, the surrounded cells - if text=0 which mean empty cell -will open up until a number or bomb or boundary is reached using recursive function.
+Player will win After opening all the cells without clicking on any bomb.
+</a>
+
+<a name="wireframesweb">
 
 ## Wireframes
 ### step1
@@ -55,15 +56,12 @@ during the game.”;
 ### step3
 ![MacDown Screenshot](images/step3.png)
 
+</a>
 
-## How to use instructions
-The purpose of the game is to open all the cells of the board which do not contain a bomb. You lose if you set off a bomb cell.
-Every non-bomb cell you open will tell you the total number of bombs in the eight neighboring cells. Once you are sure that a cell contains a bomb, you can right-click to put a flag it on it as a reminder.
-To start a new game (abandoning the current one), just click on the yellow face button.
-Happy mine hunting!
+<a name="project">
 
-## Testing
-The game was given to 8 years old child to test and find the glitches then I solved all the found glitches. 
+## SEE THE PROJECT:
 
-## Unsolved problems
-I was supposed to use a class I did not use it because it did not work with 2d array intially and the logic was so complicated that it took too much time espcially the recursive function. I did not find enough time to rewrite the program using the classes.
+### Live Deployment of App: https://esraa-alaarag.github.io/minesweeper/
+### Github : https://github.com/Esraa-Alaarag/minesweeper.git
+
