@@ -31,6 +31,7 @@ The goal of this game is to clear all the cells from a grid. if player clicks on
 <a name="technologies">
 
 ##Technologies used
+
 This game was written using html, CSS, JavaScript, JQuery and Bootstrap
 </a>
 <a name="pseudocode">
